@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="qnw-common" />
+        <module name="qnw-manager-dao" />
+        <module name="qnw-manager-interface" />
+        <module name="qnw-manager-pojo" />
+        <module name="qnw-manager-service" />
+        <module name="qnw-manager-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="qnw-common" target="1.8" />
+      <module name="qnw-manager" target="1.8" />
+      <module name="qnw-manager-dao" target="1.8" />
+      <module name="qnw-manager-interface" target="1.8" />
+      <module name="qnw-manager-pojo" target="1.8" />
+      <module name="qnw-manager-service" target="1.8" />
+      <module name="qnw-manager-web" target="1.8" />
+      <module name="qnw-parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

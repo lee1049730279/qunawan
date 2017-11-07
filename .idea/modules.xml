@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/qnw-common/qnw-common.iml" filepath="$PROJECT_DIR$/qnw-common/qnw-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager-dao/qnw-manager-dao.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager-dao/qnw-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager-interface/qnw-manager-interface.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager-interface/qnw-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager-pojo/qnw-manager-pojo.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager-pojo/qnw-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager-service/qnw-manager-service.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager-service/qnw-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-manager/qnw-manager-web/qnw-manager-web.iml" filepath="$PROJECT_DIR$/qnw-manager/qnw-manager-web/qnw-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qnw-parent/qnw-parent.iml" filepath="$PROJECT_DIR$/qnw-parent/qnw-parent.iml" />
+    </modules>
+  </component>
+</project>
