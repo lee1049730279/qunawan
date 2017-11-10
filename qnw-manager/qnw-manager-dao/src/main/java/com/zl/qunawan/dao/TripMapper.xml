@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zl.qunawan.dao.TripMapper" >
+  <resultMap id="BaseResultMap" type="com.zl.qunawan.pojo.po.Trip" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="s_title" property="sTitle" jdbcType="VARCHAR" />
+    <result column="start_place" property="startPlace" jdbcType="INTEGER" />
+    <result column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="traffic" property="traffic" jdbcType="VARCHAR" />
+    <result column="hotel" property="hotel" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="INTEGER" />
+    <result column="good_rate" property="goodRate" jdbcType="REAL" />
+    <result column="place_score" property="placeScore" jdbcType="REAL" />
+    <result column="hotel_score" property="hotelScore" jdbcType="REAL" />
+    <result column="service_score" property="serviceScore" jdbcType="REAL" />
+    <result column="traffic_score" property="trafficScore" jdbcType="REAL" />
+    <result column="is_ok" property="isOk" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, num, title, s_title, start_place, position_id, type, traffic, hotel, time, good_rate, 
+    place_score, hotel_score, service_score, traffic_score, is_ok
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zl.qunawan.pojo.po.TripExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from trip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trip
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trip
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zl.qunawan.pojo.po.TripExample" >
+    delete from trip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zl.qunawan.pojo.po.Trip" >
+    insert into trip (id, num, title, 
+      s_title, start_place, position_id, 
+      type, traffic, hotel, 
+      time, good_rate, place_score, 
+      hotel_score, service_score, traffic_score, 
+      is_ok)
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{sTitle,jdbcType=VARCHAR}, #{startPlace,jdbcType=INTEGER}, #{positionId,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{traffic,jdbcType=VARCHAR}, #{hotel,jdbcType=VARCHAR}, 
+      #{time,jdbcType=INTEGER}, #{goodRate,jdbcType=REAL}, #{placeScore,jdbcType=REAL}, 
+      #{hotelScore,jdbcType=REAL}, #{serviceScore,jdbcType=REAL}, #{trafficScore,jdbcType=REAL}, 
+      #{isOk,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zl.qunawan.pojo.po.Trip" >
+    insert into trip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="sTitle != null" >
+        s_title,
+      </if>
+      <if test="startPlace != null" >
+        start_place,
+      </if>
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="traffic != null" >
+        traffic,
+      </if>
+      <if test="hotel != null" >
+        hotel,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="goodRate != null" >
+        good_rate,
+      </if>
+      <if test="placeScore != null" >
+        place_score,
+      </if>
+      <if test="hotelScore != null" >
+        hotel_score,
+      </if>
+      <if test="serviceScore != null" >
+        service_score,
+      </if>
+      <if test="trafficScore != null" >
+        traffic_score,
+      </if>
+      <if test="isOk != null" >
+        is_ok,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null" >
+        #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startPlace != null" >
+        #{startPlace,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="traffic != null" >
+        #{traffic,jdbcType=VARCHAR},
+      </if>
+      <if test="hotel != null" >
+        #{hotel,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="goodRate != null" >
+        #{goodRate,jdbcType=REAL},
+      </if>
+      <if test="placeScore != null" >
+        #{placeScore,jdbcType=REAL},
+      </if>
+      <if test="hotelScore != null" >
+        #{hotelScore,jdbcType=REAL},
+      </if>
+      <if test="serviceScore != null" >
+        #{serviceScore,jdbcType=REAL},
+      </if>
+      <if test="trafficScore != null" >
+        #{trafficScore,jdbcType=REAL},
+      </if>
+      <if test="isOk != null" >
+        #{isOk,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zl.qunawan.pojo.po.TripExample" resultType="java.lang.Integer" >
+    select count(*) from trip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update trip
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sTitle != null" >
+        s_title = #{record.sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startPlace != null" >
+        start_place = #{record.startPlace,jdbcType=INTEGER},
+      </if>
+      <if test="record.positionId != null" >
+        position_id = #{record.positionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.traffic != null" >
+        traffic = #{record.traffic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hotel != null" >
+        hotel = #{record.hotel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodRate != null" >
+        good_rate = #{record.goodRate,jdbcType=REAL},
+      </if>
+      <if test="record.placeScore != null" >
+        place_score = #{record.placeScore,jdbcType=REAL},
+      </if>
+      <if test="record.hotelScore != null" >
+        hotel_score = #{record.hotelScore,jdbcType=REAL},
+      </if>
+      <if test="record.serviceScore != null" >
+        service_score = #{record.serviceScore,jdbcType=REAL},
+      </if>
+      <if test="record.trafficScore != null" >
+        traffic_score = #{record.trafficScore,jdbcType=REAL},
+      </if>
+      <if test="record.isOk != null" >
+        is_ok = #{record.isOk,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update trip
+    set id = #{record.id,jdbcType=INTEGER},
+      num = #{record.num,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      s_title = #{record.sTitle,jdbcType=VARCHAR},
+      start_place = #{record.startPlace,jdbcType=INTEGER},
+      position_id = #{record.positionId,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      traffic = #{record.traffic,jdbcType=VARCHAR},
+      hotel = #{record.hotel,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=INTEGER},
+      good_rate = #{record.goodRate,jdbcType=REAL},
+      place_score = #{record.placeScore,jdbcType=REAL},
+      hotel_score = #{record.hotelScore,jdbcType=REAL},
+      service_score = #{record.serviceScore,jdbcType=REAL},
+      traffic_score = #{record.trafficScore,jdbcType=REAL},
+      is_ok = #{record.isOk,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zl.qunawan.pojo.po.Trip" >
+    update trip
+    <set >
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null" >
+        s_title = #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startPlace != null" >
+        start_place = #{startPlace,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="traffic != null" >
+        traffic = #{traffic,jdbcType=VARCHAR},
+      </if>
+      <if test="hotel != null" >
+        hotel = #{hotel,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=INTEGER},
+      </if>
+      <if test="goodRate != null" >
+        good_rate = #{goodRate,jdbcType=REAL},
+      </if>
+      <if test="placeScore != null" >
+        place_score = #{placeScore,jdbcType=REAL},
+      </if>
+      <if test="hotelScore != null" >
+        hotel_score = #{hotelScore,jdbcType=REAL},
+      </if>
+      <if test="serviceScore != null" >
+        service_score = #{serviceScore,jdbcType=REAL},
+      </if>
+      <if test="trafficScore != null" >
+        traffic_score = #{trafficScore,jdbcType=REAL},
+      </if>
+      <if test="isOk != null" >
+        is_ok = #{isOk,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zl.qunawan.pojo.po.Trip" >
+    update trip
+    set num = #{num,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      s_title = #{sTitle,jdbcType=VARCHAR},
+      start_place = #{startPlace,jdbcType=INTEGER},
+      position_id = #{positionId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      traffic = #{traffic,jdbcType=VARCHAR},
+      hotel = #{hotel,jdbcType=VARCHAR},
+      time = #{time,jdbcType=INTEGER},
+      good_rate = #{goodRate,jdbcType=REAL},
+      place_score = #{placeScore,jdbcType=REAL},
+      hotel_score = #{hotelScore,jdbcType=REAL},
+      service_score = #{serviceScore,jdbcType=REAL},
+      traffic_score = #{trafficScore,jdbcType=REAL},
+      is_ok = #{isOk,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
